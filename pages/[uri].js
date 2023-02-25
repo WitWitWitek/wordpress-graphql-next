@@ -3,13 +3,14 @@ import Footer from '../components/Footer'
 import { getPostByUri } from '../lib/test-data';
 import { client } from '../lib/apollo';
 import { gql } from '@apollo/client';
+import Link from 'next/link';
 
 export default function SlugPage({ post }) {
-
+  console.log(post);
   return (
     <div>
       <Head>
-        <title>Headless WP Next Starter</title>
+        <title>{post.title}</title>
         <link rel="icon" href="favicon.ico"></link>
       </Head>
 
@@ -20,10 +21,10 @@ export default function SlugPage({ post }) {
             </h1>
             <p>✍️  &nbsp;&nbsp;{`${post.author.node.firstName} ${post.author.node.lastName}`} | 🗓️ &nbsp;&nbsp;{ new Date(post.date).toLocaleDateString() }</p>
           </div>
-            <article dangerouslySetInnerHTML={{__html: post.content}}>   
+            <article className='content' dangerouslySetInnerHTML={{__html: post.content}}>   
             </article>
       </main>
-
+      <Link href='/'> &#8594; Go back home</Link>
       <Footer></Footer>
 
     </div>
@@ -45,6 +46,7 @@ export async function getStaticProps({ params }){
             lastName
           }
         }
+        slug
       }
     }
   `

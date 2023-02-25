@@ -22,6 +22,12 @@ body {
      -moz-text-fill-color: transparent;
      -webkit-text-fill-color: transparent;
  }
+
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
 .container {
     min-height: 100vh;
     padding: 5rem 0.5rem;
@@ -32,8 +38,7 @@ body {
 }
 
 main {
-    /* padding: 5rem 0; */
-    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,6 +86,14 @@ a {
     font-size: 4rem;
 }
 
+@media (max-width: 600px) {
+    .title {
+        margin: 0;
+        line-height: 1.15;
+        font-size: 2rem;
+    }
+}
+
 .title,
 .description {
     text-align: center;
@@ -106,11 +119,6 @@ a {
     -webkit-text-fill-color: white;
 }
 
-article {
-    min-width: 66%;
-    max-width: 850px;
-    font-size: 1.5rem;
-}
 
 code {
     background: #fafafa;
@@ -126,9 +134,7 @@ code {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-
     max-width: 800px;
-    margin-top: 3rem;
 }
 
 .card {
@@ -142,6 +148,12 @@ code {
     border-radius: 10px;
     transition: color 0.15s ease, border-color 0.15s ease;
     background: var(--lapis-gradient)
+}
+
+.content {
+    padding: 10px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .card:hover,

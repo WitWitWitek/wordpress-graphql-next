@@ -9,24 +9,24 @@ export default function Home({ posts }) {
   return (
     <div className="container">
       <Head>
-        <title>Headless WP Next Starter</title>
+        <title>Przykładowa stronka</title>
         <link rel="icon" href="favicon.ico"></link>
       </Head>
 
       <main>
         <h1 className="title">
-          Headless WordPress Next.js Starter
+          NEXT + GRAPHQL + WORDPRESS
         </h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          Posty:
         </p>
 
         <div className="grid">
           {
             posts.map((post) => {
               return (
-                <PostCard key={post.uri} post={post}></PostCard>
+                <PostCard key={post.slug} post={post}></PostCard>
               )
             })
           }
@@ -47,6 +47,7 @@ export async function getStaticProps(){
           title
           content
           uri
+          slug
           date
         }
       }

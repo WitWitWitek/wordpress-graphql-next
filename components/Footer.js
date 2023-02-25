@@ -7,7 +7,7 @@ export default function Footer (){
             target="_blank"
             rel="noopener noreferrer"
             >
-            Part of the WP Engine Headless Developers Road Map 🗺️ 
+            Witek made that 🗺️ 
             </a>
         </footer>
     )
