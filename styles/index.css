@@ -28,13 +28,18 @@ body {
     min-height: 100vh;
 }
 
+.navigation {
+    background: #333;
+    width: 100%;
+    padding: 20px;
+}
+
+.navigation a {
+    margin-right: 5px;
+}
+
 .container {
     min-height: 100vh;
-    padding: 5rem 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 main {
@@ -65,8 +70,7 @@ footer a {
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+    color: red;
 }
 
 .title a {

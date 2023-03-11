@@ -1,13 +1,12 @@
 import Head from 'next/head';
-import Footer from '../components/Footer';
-import PostCard from '../components/PostCard';
-import { getAllPosts } from '../lib/test-data';
-import { client } from '../lib/apollo'
-import { gql } from '@apollo/client'
- 
-export default function Home({ posts }) {
+import Link from 'next/link';
+import { client } from '../lib/apollo';
+import { gql } from '@apollo/client';
+import Layout from '../components/Layout/Layout';
+
+export default function Home({ homepage }) {
   return (
-    <div className="container">
+    <Layout>
       <Head>
         <title>Przykładowa stronka</title>
         <link rel="icon" href="favicon.ico"></link>
@@ -15,51 +14,40 @@ export default function Home({ posts }) {
 
       <main>
         <h1 className="title">
-          NEXT + GRAPHQL + WORDPRESS
+          Przykładowy tytuł
         </h1>
 
         <p className="description">
-          Posty:
+          O nas:
+          <article className='content' dangerouslySetInnerHTML={{__html: homepage.content}}>   
+          </article>
         </p>
 
-        <div className="grid">
-          {
-            posts.map((post) => {
-              return (
-                <PostCard key={post.slug} post={post}></PostCard>
-              )
-            })
-          }
-        </div>
       </main>
 
-      <Footer></Footer>
-    </div>
+      <section>
+
+      </section>
+    </Layout>
   )
 }
 
-export async function getStaticProps(){
-
-  const GET_POSTS = gql`
-    query NewQuery {
-      posts {
-        nodes {
-          title
+export async function getStaticProps() {
+  const GET_HOMEPAGE = gql`
+      query GetHomepage {
+        page(id: "home-page", idType: URI) {
           content
-          uri
-          slug
-          date
         }
-      }
     }
   `
   const response = await client.query({
-    query: GET_POSTS
+    query: GET_HOMEPAGE
   })
-  const posts = response?.data?.posts?.nodes
+
   return {
     props: {
-      posts
+      homepage: response?.data?.page
     }
   }
+
 }
