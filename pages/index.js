@@ -9,7 +9,7 @@ export default function Home({ homepage }) {
     <Layout>
       <Head>
         <title>Przykładowa stronka</title>
-        <link rel="icon" href="favicon.ico"></link>
+        {/* <link rel="icon" href="favicon.ico"></link> */}
       </Head>
 
       <main>
@@ -17,11 +17,11 @@ export default function Home({ homepage }) {
           Przykładowy tytuł
         </h1>
 
-        <p className="description">
+        <div className="description">
           O nas:
           <article className='content' dangerouslySetInnerHTML={{__html: homepage.content}}>   
           </article>
-        </p>
+        </div>
 
       </main>
 
